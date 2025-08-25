@@ -1,0 +1,473 @@
+/* === Global Reset & Base === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+}
+
+/* === Ask Username Section === */
+.askusername {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0,0,0,0.4);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    text-align: center;
+    animation: fadeIn 1s ease;
+}
+
+.askusername input {
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 20px;
+    width: 250px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.askusername input:focus {
+    box-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+.askusername button {
+    padding: 12px 30px;
+    background: #ff4b2b;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.askusername button:hover {
+    background: #ff416c;
+    transform: translateY(-3px);
+}
+
+/* === Main Menu Section === */
+.mainmenu {
+    width: 90%;
+    max-width: 900px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: fadeIn 1s ease;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background: rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.navbar i {
+    margin-top: -14px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.navbar i:hover, .navbar span:hover {
+    color: #ff4b2b;
+}
+
+.navbar span {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    margin-right: 140px;
+    margin-top: 10px;
+}
+
+.navbar span i {
+    margin-top: 5px;
+    margin-right: 4px;
+}
+
+.navbar span h1 {
+    font-size: 32px;
+}
+
+/* === Games Grid === */
+.mainmenu > div {
+    padding: 30px;
+}
+
+.mainmenu h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+
+.mainmenu > div > div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.mainmenu > div > div > div {
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 20px;
+    width: 180px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mainmenu > div > div > div:hover {
+    transform: translateY(-5px);
+    background: rgba(255,255,255,0.2);
+}
+
+.mainmenu img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+
+.tictactoegame {
+    display: none;
+    width: 400px;
+    background-color: #ffffffdd;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    text-align: center;
+    position: relative;
+}
+.tictactoegame h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+.gametable {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.cell {
+    background: #f3f3f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.2s;
+    color: black; /* Default rang */
+}
+
+.cell:hover {
+    background: #e0e0e0;
+}
+.ticback button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    margin: 0 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.ticback button:hover {
+    transform: scale(1.1);
+}
+.reset-btn {
+    background-color: #ff7675;
+    color: white;
+}
+.menu-btn {
+    background-color: #00b894;
+    color: white;
+}
+.winner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 28px;
+    border-radius: 15px;
+    display: none;
+    flex-direction: column;
+}
+.winner-overlay button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #0984e3;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+.settings {
+    display: none;
+    width: 350px;
+    height: 400px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 20px;
+    padding: 20px;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+}
+
+.settings button {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 15px;
+    background-color: #ff4b2b;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.settings button:hover {
+    background-color: #ff6f50;
+    transform: scale(1.05);
+}
+
+.changenickblock {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.changenickblock label {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.changenickblock input {
+    flex: 1;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    font-size: 16px;
+}
+
+.changenickblock button {
+    background-color: #00b894;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.changebtn {
+    margin-left: -80px;
+}
+
+.changenickblock button:hover {
+    background-color: #00d08f;
+    transform: scale(1.05);
+}
+
+/* Back button styling */
+.settings > button:first-child {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #ff7675;
+}
+
+.settings > button:first-child:hover {
+    background-color: #ff9999;
+}
+
+.changeduser {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.8);
+    padding: 20px 30px;
+    border-radius: 20px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    z-index: 10;
+    animation: fadeIn 0.3s ease;
+}
+
+.changeduser h2 {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.changeduser button {
+    padding: 8px 20px;
+    background: #00b894;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.changeduser button:hover {
+    background-color: #00d08f;
+    transform: scale(1.05);
+}
+
+.football-over {
+    width: 90%;
+    max-width: 700px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    animation: fadeIn 0.8s ease;
+}
+
+.football-over h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #ffdd57;
+}
+
+.choose-text {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.players {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.player-card {
+    width: 140px;
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.player-card:hover {
+    transform: scale(1.05);
+    background: rgba(255,255,255,0.2);
+}
+
+.player-card img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 8px;
+}
+
+.player-card h3 {
+    font-size: 16px;
+}
+
+.foot-controls {
+    margin-top: 25px;
+}
+
+.foot-controls button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background: #00b894;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.foot-controls button:hover {
+    background: #00d08f;
+    transform: scale(1.05);
+}
+
+.selected-team {
+    display: none;
+    margin-top: 30px;
+    background: rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.selected-team h2, .overtext {
+    margin-bottom: 15px;
+    color: #ffdd57;
+}
+
+.selected-team ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.selected-team li, .overtext {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+
+/* === Animations === */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-20px);}
+    100% { opacity: 1; transform: translateY(0);}
+}
+
+/* === Responsive === */
+@media(max-width: 600px) {
+    .askusername input {
+        width: 200px;
+    }
+
+    .mainmenu > div > div > div {
+        width: 140px;
+    }
+
+    .mainmenu img {
+        width: 80px;
+        height: 80px;
+    }
+}
